@@ -1,0 +1,7 @@
+{
+  "name": "VovaBank 3.0",
+  "description": "Український цифровий банк. Економічна стратегія, робота, фінанси.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

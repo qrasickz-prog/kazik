@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="uk" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VovaBank - Future Finance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              border: "var(--border)",
+              background: "var(--background)",
+              foreground: "var(--foreground)",
+              card: "var(--card)",
+              "card-foreground": "var(--card-foreground)",
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'slide-in-right': 'slideInRight 0.3s ease-out forwards',
+              'shine': 'shine 4s infinite cubic-bezier(0.4, 0, 0.2, 1)',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              slideInRight: {
+                '0%': { opacity: '0', transform: 'translateX(20px)' },
+                '100%': { opacity: '1', transform: 'translateX(0)' },
+              },
+              shine: {
+                '0%': { transform: 'translateX(-100%) rotate(-45deg)' },
+                '100%': { transform: 'translateX(200%) rotate(-45deg)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        --background: #ffffff;
+        --foreground: #0f172a;
+        --card: rgba(255, 255, 255, 0.7);
+        --card-foreground: #0f172a;
+        --border: rgba(0, 0, 0, 0.1);
+        --primary-glow: rgba(37, 99, 235, 0.3);
+      }
+
+      .dark {
+        --background: #000000;
+        --foreground: #f8fafc;
+        --card: rgba(10, 10, 10, 0.6);
+        --card-foreground: #f8fafc;
+        --border: rgba(255, 255, 255, 0.08);
+        --primary-glow: rgba(59, 130, 246, 0.5);
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--background);
+        color: var(--foreground);
+        overflow-x: hidden;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      /* Liquid Background */
+      .liquid-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -2;
+        background: 
+          radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.15), transparent 40%),
+          radial-gradient(circle at 85% 30%, rgba(37, 99, 235, 0.15), transparent 40%);
+        filter: blur(80px);
+        transition: opacity 0.5s ease;
+      }
+
+      .dark .liquid-bg {
+        background: 
+          radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.25), transparent 25%),
+          radial-gradient(circle at 85% 30%, rgba(37, 99, 235, 0.2), transparent 25%);
+      }
+
+      .bg-noise {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        opacity: 0.04;
+        pointer-events: none;
+        background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--border); 
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(100, 116, 139, 0.5); 
+      }
+      
+      /* Glass Utilities */
+      .glass-panel {
+        background: var(--card);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--border);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, border-color 0.3s;
+      }
+      
+      .dark .glass-panel {
+         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      }
+
+      .perspective-1000 { perspective: 1000px; }
+      .transform-style-3d { transform-style: preserve-3d; }
+      .backface-hidden { backface-visibility: hidden; }
+      .rotate-y-180 { transform: rotateY(180deg); }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react/": "https://esm.sh/react@18.2.0/",
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?deps=react@18.2.0,react-dom@18.2.0",
+    "recharts": "https://esm.sh/recharts@2.12.2?deps=react@18.2.0,react-dom@18.2.0",
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0?deps=react@18.2.0",
+    "@google/genai": "https://esm.sh/@google/genai@0.1.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div class="liquid-bg"></div>
+    <div class="bg-noise"></div>
+    <div id="root"></div>
+  </body>
+</html>
